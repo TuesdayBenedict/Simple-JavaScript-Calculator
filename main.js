@@ -30,6 +30,10 @@ document.querySelectorAll(".button").forEach((element) => {
             storeTemporalResult = resultElement.innerHTML
         }
 
+        else if ((value == ".") && (expressionElement.innerHTML == "")) {
+            expressionElement.innerHTML = expressionElement.innerHTML + "0" + element.innerHTML;
+        }
+
         else if ((value == ".") && (operators.has(expressionElement.innerHTML.slice(-1)))) {
             expressionElement.innerHTML = expressionElement.innerHTML + "0" + element.innerHTML;
         }
@@ -40,7 +44,7 @@ document.querySelectorAll(".button").forEach((element) => {
 
         else if (operators.has(value) && (expressionElement.innerHTML == "")) { }
 
-        else if ((value == "'") && (expressionElement.innerHTML.lastIndexOf(".") > expressionElement.innerHTML.lastIndexOf(operators.values().next().value))) { }
+        else if ((value == ".") && (expressionElement.innerHTML.lastIndexOf(".") > expressionElement.innerHTML.lastIndexOf(operators.values().next().value))) { }
 
         else if (operators.has(value) && (storeTemporalResult != "")) {
             expressionElement.innerHTML = storeTemporalResult + value;
